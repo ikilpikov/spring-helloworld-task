@@ -1,14 +1,15 @@
 package org.ik.data;
 
 import java.util.Map;
-import java.util.stream.IntStream;
+
+import javax.annotation.PostConstruct;
 
 public class Student {
     private String name;
-    private Map<String, Integer> marks;
+    private Map<Subject, Integer> marks;
     private Boolean isEnrolled = false;
 
-    public Student(String name, Map<String, Integer> marks) {
+    public Student(String name, Map<Subject, Integer> marks) {
         this.name = name;
         this.marks = marks;
     }
@@ -21,11 +22,11 @@ public class Student {
         this.name = name;
     }
 
-    public Map<String, Integer> getMarks() {
+    public Map<Subject, Integer> getMarks() {
         return marks;
     }
 
-    public void setMarks(Map<String, Integer> marks) {
+    public void setMarks(Map<Subject, Integer> marks) {
         this.marks = marks;
     }
 
@@ -43,6 +44,13 @@ public class Student {
                 .mapToInt(Number::intValue)
                 .average()
                 .orElse(0.0);
+    }
+
+    @PostConstruct
+    public void init() {
+        if (calculateAverageMark() >= 3.0) {
+            isEnrolled = true;
+        }
     }
 
     @Override

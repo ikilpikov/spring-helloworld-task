@@ -1,11 +1,12 @@
 package org.ik.context;
 
 import org.ik.data.Student;
+import org.ik.data.Subject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 import static org.ik.data.Subject.ENGLISH;
@@ -17,7 +18,7 @@ import static org.ik.data.Subject.PHYSICS;
 public class ApplicationContext {
     @Bean
     public Student student1() {
-        Map marks = new HashMap<>();
+        Map<Subject, Integer> marks = new EnumMap<>(Subject.class);
         marks.put(ENGLISH, 5);
         marks.put(MATH, 3);
         marks.put(PHYSICS, 4);
@@ -27,7 +28,7 @@ public class ApplicationContext {
 
     @Bean
     public Student student2() {
-        Map marks = new HashMap<>();
+        Map<Subject, Integer> marks = new EnumMap<>(Subject.class);
         marks.put(ENGLISH, 2);
         marks.put(MATH, 2);
         marks.put(PHYSICS, 2);
@@ -37,7 +38,7 @@ public class ApplicationContext {
 
     @Bean
     public Student student3() {
-        Map marks = new HashMap<>();
+        Map<Subject, Integer> marks = new EnumMap<>(Subject.class);
         marks.put(ENGLISH, 2);
         marks.put(MATH, 2);
         marks.put(PHYSICS, 3);

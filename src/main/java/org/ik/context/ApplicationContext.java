@@ -2,6 +2,7 @@ package org.ik.context;
 
 import org.ik.data.Student;
 import org.ik.data.Subject;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -44,5 +45,10 @@ public class ApplicationContext {
         marks.put(PHYSICS, 3);
 
         return new Student("Jil", marks);
+    }
+
+    @Bean
+    public BeanPostProcessor studentBeanPostProcessor() {
+        return new StudentBeanPostProcessor();
     }
 }

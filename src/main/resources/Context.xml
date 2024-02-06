@@ -41,4 +41,6 @@
             </map>
         </constructor-arg>
     </bean>
+
+    <bean id="studentBeanPostProcessor" class="org.ik.context.StudentBeanPostProcessor"/>
 </beans>
